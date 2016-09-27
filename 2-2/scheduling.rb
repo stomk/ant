@@ -13,6 +13,7 @@ end
 
 
 def schedule(jobs)
+  jobs = jobs.sort_by { |j| j[1] }  # Sort by ending time
   prev_end = 0
   selected_jobs = []
   jobs.each do |job|
@@ -28,6 +29,5 @@ end
 
 in_file = ARGV[0]
 jobs = load_from_file(in_file)
-jobs = jobs.sort_by { |j| j[1] }
 selected_jobs = schedule(jobs)
 p selected_jobs
